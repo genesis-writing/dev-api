@@ -1,3 +1,11 @@
 #!/bin/bash
 
-pnpm release
+# ./.husky/post-commit
+#
+# Post-commit hook script, 
+# runs release-it to generate changelog and release package.
+
+# Disable Husky during release-it to avoid infinite commit loop.
+export HUSKY=0
+pnpm release-it --ci
+unset HUSKY

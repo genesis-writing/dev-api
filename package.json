@@ -1,4 +1,40 @@
 {
+  "type": "module",
+  "private": true,
+  "name": "dev-api",
+  "version": "0.1.0",
+  "description": "API endpoints for accessing unofficial data about The Ohio State University.",
+  "keywords": [
+    "@keminghe/osu",
+    "cloudflare",
+    "api"
+  ],
+  "homepage": "https://api.osu.dev",
+  "bugs": {
+    "url": "https://github.com/devosu/dev-api/issues",
+    "email": "dev@osu.edu"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "DEV",
+    "email": "dev@osu.edu",
+    "url": "https://osu.dev"
+  },
+  "contributors": [
+    {
+      "name": "Keming He",
+      "email": "keminghe.career@gmail.com",
+      "url": "https://github.com/KemingHe"
+    }
+  ],
+  "funding": "https://osu.dev/support",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devosu/dev-api.git"
+  },
+  "scripts": {
+    "prepare": "husky || true"
+  },
 	"packageManager": "pnpm@9.11.0+sha512.0a203ffaed5a3f63242cd064c8fb5892366c103e328079318f78062f24ea8c9d50bc6a47aa3567cabefd824d170e78fa2745ed1f16b132e16436146b7688f19b",
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.2",
@@ -7,5 +43,17 @@
 		"cz-conventional-changelog": "^3.3.0",
 		"husky": "^9.1.6",
 		"release-it": "^17.6.0"
-	}
+	},
+  "engines": {
+    "node": ">=22"
+  },
+  "os": [
+    "linux",
+    "darwin",
+    "win32"
+  ],
+  "cpu": [
+    "x64",
+    "arm64"
+  ]
 }

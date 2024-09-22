@@ -1,0 +1,39 @@
+{
+  "verbose": 2,
+  "hooks": {
+    "before:init": [
+      "echo -e '\\033[0;36m\nAs post-commit standard procedure, begin release process...\\033[0m'"
+    ],
+    "after:bump": [
+      "echo -e '\\033[0;33m\nSuccessfully bumped to version: v${ version }; now generating CHANGELOG.md...\\033[0m'"
+    ],
+    "after:release": [
+      "echo -e '\\033[0;32m\nNew release project: ${ name }, version: v${ version } is available to be push.\\033[0m'"
+    ]
+  },
+  "git": {
+    "tag": true,
+    "tagArgs": ["-s"],
+    "tagName": "v${version}",
+    "requireCleanWorkingDir": true,
+    "commit": true,
+    "commitMessage": "chore(changelog): v${version} via release-it (auto, ci env)",
+    "commitArgs": ["--no-verify"],
+    "push": false
+  },
+  "npm": {
+    "publish": false
+  },
+  "github": {
+    "release": false
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "infile": "CHANGELOG.md",
+      "header": "# Changelog",
+      "preset": {
+        "name": "conventionalcommits"
+      }
+    }
+  }
+}
