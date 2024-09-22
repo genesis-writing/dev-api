@@ -1,0 +1,180 @@
+openapi: 3.0.3
+info:
+  title: DEV - API
+  description: |-
+    Open-source API endpoints providing (unofficial) publicly-available data about The Ohio State University.
+
+    This is a wrapper for @keminghe/osu to enable dev access for all languages. Learn more::
+    - [@keminghe/osu on NPM](https://www.npmjs.com/package/@keminghe/osu)
+    - [@keminghe/osu GitHub Repository](https://github.com/KemingHe/OSU)
+    
+  # termsOfService: http://swagger.io/terms/
+  
+  contact:
+    email: dev@osu.edu
+    
+  license:
+    name: MIT
+    url: https://choosealicense.com/licenses/mit/
+    
+  version: 0.4.0
+  
+externalDocs:
+  description: The Software Engineering Club at The Ohio State University (DEV at OSU))
+  url: http://osu.dev
+  
+servers:
+  - url: https://api.osu.dev/v1
+  
+tags:
+  - name: undergrad-majors
+    externalDocs:
+      description: Official OSU site
+      url: https://undergrad.osu.edu/majors-and-academics/majors
+  
+  - name: student-orgs
+    externalDocs:
+      description: Official OSU site
+      url: https://activities.osu.edu/involvement/student_organizations
+
+paths:
+  /undergrad-majors:
+    get:
+      tags:
+        - undergrad-majors
+      summary: Access all undergrad majors at OSU
+      responses:
+        '200':
+          description: Access Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UndergradMajor'
+                
+  /student-orgs:
+    get:
+      tags:
+        - student-orgs
+      summary: Access all student orgs at OSU
+      responses:
+        '200':
+          description: Access Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentOrg'
+
+components:
+  schemas:
+    Campus:
+      type: string
+      enum:
+        - Columbus
+        - Lima
+        - Marion
+        - Masfield
+        - Newark
+        - Wooster
+  
+    College:
+      type: string
+      enum:
+        - Architecture
+        - Arts and Sciences
+        - Business
+        - Dental Hygiene
+        - Dentistry
+        - Education and Human Ecology
+        - Engineering
+        - Environment and Natural Resources
+        - Food, Agricultural and Environmental Sciences
+        - Health and Rehabilitation Sciences
+        - Medicine
+        - Nursing
+        - Optometry
+        - Pharmacy
+        - Pre-Professional
+        - Public Affairs
+        - Public Health
+        - Social Work
+        - University Exploration
+  
+    StudentOrg:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        purposeStatement:
+          type: string
+          minLength: 1
+          nullable: true
+        campuses:
+          type: array
+          minItems: 1
+          nullable: true
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/Campus'
+        categories:
+          type: array
+          minItems: 1
+          nullable: true
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/StudentOrgCategory'
+  
+    StudentOrgCategory:
+      type: string
+      enum:
+        - Academic/College
+        - Awareness/Activism
+        - Community Service/Service Learning
+        - Creative and Performing Arts
+        - Ethnic/Cultural
+        - Governance Organizations
+        - Honoraries/Honor Societies
+        - Media, Journalism, and Creative Writing
+        - Religious/Spiritual
+        - Social Fraternities/Sororities
+        - Special Interest
+        - Sports and Recreation
+        - Technology
+        - Graduate
+        - Professional
+        - Undergraduate
+  
+    UndergradDegree:
+      type: string
+      enum:
+        - AA (Associate of Arts)
+        - AS (Associate of Science)
+        - BA (Bachelor of Arts)
+        - BS (Bachelor of Science)
+        - BFA (Bachelor of Fine Arts)
+        - BM (Bachelor of Music)
+        - BME (Bachelor of Music Education)
+        - BSD (Bachelor of Science in Design)
+  
+    UndergradMajor:
+      type: object
+      properties:
+        major:
+          type: string
+          minLength: 1
+        degrees:
+          type: array
+          minItems: 1
+          nullable: true
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/UndergradDegree'
+        campuses:
+          type: array
+          minItems: 1
+          nullable: true
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/Campus'
+        college:
+          $ref: '#/components/schemas/College'
