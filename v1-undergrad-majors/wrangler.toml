@@ -1,15 +1,18 @@
 #:schema node_modules/wrangler/config-schema.json
-name = "undergrad-research-postings"
+name = "v1-undergrad-majors"
 main = "src/index.ts"
 compatibility_date = "2024-09-19"
 compatibility_flags = ["nodejs_compat"]
+routes = [
+  { pattern = "api.osu.dev/v1/undergrad-majors", zone_name = "osu.dev" },
+]
 
 # Automatically place your workloads in an optimal location to minimize latency.
 # If you are running back-end logic in a Worker, running it closer to your back-end infrastructure
 # rather than the end user may result in better performance.
 # Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
-# [placement]
-# mode = "smart"
+[placement]
+mode = "smart"
 
 # Variable bindings. These are arbitrary, plaintext strings (similar to environment variables)
 # Docs:

@@ -12,28 +12,24 @@
  */
 
 // OSU data essential import.
-import { getUndergradMajors } from "@keminghe/osu";
+import { getStudentOrgs } from "@keminghe/osu";
 
 // -----------------------------------------------------------------------------
-// GET api endpoint to return a list of all undergraduate majors at OSU.
+// GET api endpoint to return a list of all student organizations at OSU.
 export default {
   async fetch(request, env, ctx): Promise<Response> {
-    // For GET requests, return a JSON object with the list of undergraduate majors.
+    // For GET requests, return a JSON object with the list of student organizations.
     if (request.method === "GET") {
-      return new Response(
-        JSON.stringify(getUndergradMajors()), 
-        {
-          status: 200,
-          headers: { "Content-Type": "application/json" },
+      return new Response(JSON.stringify(getStudentOrgs()), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
       });
     }
 
     // For other requests, return a 418 I'm a teapot response.
-    return new Response(
-      "I'm a teapot", 
-      { 
-        status: 418,
-        headers: { "Content-Type": "text/plain" },
+    return new Response("I'm a teapot", {
+      status: 418,
+      headers: { "Content-Type": "text/plain" },
     });
   },
 } satisfies ExportedHandler<Env>;
