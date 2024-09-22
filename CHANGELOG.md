@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/devosu/dev-api/compare/v0.2.0...v0.3.0) (2024-09-22)
+
+
+### Features
+
+* **v1-student-orgs/:** implemented v1/student-orgs GET api endpoint to return all stu orgs ([441c803](https://github.com/devosu/dev-api/commit/441c803647669a62df716ace0b39c877da12ff27))
+
 ## 0.2.0 (2024-09-22)
 
 
