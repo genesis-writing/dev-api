@@ -1,0 +1,6 @@
+#!/bin/bash
+
+pnpm install
+pnpm update
+
+git add -A

@@ -1,0 +1,5 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`dev-api-undergra-majors worker > (integration) responds to GET requests with a valid list of all undergrad majors at OSU. 1`] = `Response {}`;
+
+exports[`dev-api-undergra-majors worker > (integration) responds to non-GET requests with 418 I'm a teapot. 1`] = `Response {}`;
