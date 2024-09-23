@@ -2,7 +2,7 @@
   "type": "module",
   "private": true,
   "name": "dev-api",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "API endpoints for accessing unofficial data about The Ohio State University.",
   "keywords": [
     "@keminghe/osu",
