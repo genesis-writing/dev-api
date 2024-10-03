@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`The v1-undergrad-research-postings worker > (integration) responds to non-GET requests with 418 I'm a teapot. 1`] = `Response {}`;
