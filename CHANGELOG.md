@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/devosu/dev-api/compare/v0.3.3...v0.4.0) (2024-10-03)
+
+
+### Features
+
+* **research postings:** implemented research postings endpoint, full tested, yet to doc ([8e06c69](https://github.com/devosu/dev-api/commit/8e06c69f801920907adc017c897cefa92336e9c6))
+
 ## [0.3.3](https://github.com/devosu/dev-api/compare/v0.3.2...v0.3.3) (2024-09-23)
 
 ## [0.3.2](https://github.com/devosu/dev-api/compare/v0.3.1...v0.3.2) (2024-09-22)
