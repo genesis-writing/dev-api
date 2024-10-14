@@ -41,11 +41,9 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi
         },
+        blog: false, // Disabled since we don't need it for our purposes
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -53,10 +51,31 @@ const config = {
     ],
   ],
 
+  plugins: [
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: "openapi", // plugin id
+        docsPluginId: "classic", // configured for preset-classic
+        config: {
+          dev_api_versioned: {
+            specPath: "../docs/openapi.yaml", // Path to OpenAPI spec file
+            outputDir: "./docs/api-docs", // Where the generated API docs go
+            sidebarOptions: {
+              groupPathsBy: "tag", // Controls how the API docs are grouped in the sidebar
+            },
+          },
+        },
+      },
+    ]
+  ],
+
+  themes: ["docusaurus-theme-openapi-docs"], // export theme components
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
+      // Replace with project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
         title: 'Home',
@@ -113,6 +132,32 @@ const config = {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
       },
+      languageTabs: [ // Determines displayed languages and order
+        {
+          language: "curl",
+        },
+        {
+          language: "java",
+        },
+        {
+          language: "kotlin",
+        },
+        {
+          language: "objective-c",
+        },
+        {
+          language: "javascript",
+        },
+        {
+          language: "csharp",
+        },
+        {
+          language: "php",
+        },
+        {
+          language: "python",
+        },
+      ],
     }),
 };
 
