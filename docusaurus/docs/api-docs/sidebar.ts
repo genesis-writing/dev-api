@@ -4,7 +4,7 @@ const sidebar: SidebarsConfig = {
   apisidebar: [
     {
       type: "doc",
-      id: "api-/dev-api",
+      id: "api-v1.0.0-/dev-api",
     },
     {
       type: "category",
@@ -12,7 +12,7 @@ const sidebar: SidebarsConfig = {
       items: [
         {
           type: "doc",
-          id: "api-/access-all-undergrad-majors-at-osu",
+          id: "api-v1.0.0-/access-all-undergrad-majors-at-osu",
           label: "Access all undergrad majors at OSU",
           className: "api-method get",
         },
@@ -24,7 +24,7 @@ const sidebar: SidebarsConfig = {
       items: [
         {
           type: "doc",
-          id: "api-/access-all-student-orgs-at-osu",
+          id: "api-v1.0.0-/access-all-student-orgs-at-osu",
           label: "Access all student orgs at OSU",
           className: "api-method get",
         },

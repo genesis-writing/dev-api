@@ -15,16 +15,7 @@ const config = {
   // Production url of the docs site
   url: 'https://docs.api.osu.dev',
   // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
-
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -55,14 +46,27 @@ const config = {
     [
       'docusaurus-plugin-openapi-docs',
       {
-        id: "openapi", // plugin id
-        docsPluginId: "classic", // configured for preset-classic
+        id: 'openapi', // plugin id
+        docsPluginId: 'classic', // configured for preset-classic
         config: {
           dev_api_versioned: {
-            specPath: "../docs/openapi.yaml", // Path to OpenAPI spec file
-            outputDir: "./docs/api-docs", // Where the generated API docs go
+            // General configuration for the API docs
+            specPath: '../docs/openapi.yaml', // Path to OpenAPI spec file
+            outputDir: './docs/api-docs/current', // Where the generated API docs go
             sidebarOptions: {
-              groupPathsBy: "tag", // Controls how the API docs are grouped in the sidebar
+              groupPathsBy: 'tag', // Group by tags defined in the OpenAPI spec
+            },
+            // Versioning config
+            version: '1.0.0', // Current version
+            label: 'v1.0.0', // Current version label
+            baseUrl: '/api-docs', // Leading slash is important, direct to current API version
+            versions: {
+              '1.0.0': {
+                specPath: '../docs/openapi.yaml', // Path to V1.0.0 OpenAPI spec file
+                outputDir: './docs/api-docs/1.0.0', // No trailing slash, where the V1 generated API docs go
+                label: 'v1.0.0',
+                baseUrl: '/docs/api-docs/1.0.0', // Leading slash is important, versioned path
+              },
             },
           },
         },
@@ -70,7 +74,7 @@ const config = {
     ]
   ],
 
-  themes: ["docusaurus-theme-openapi-docs"], // export theme components
+  themes: ['docusaurus-theme-openapi-docs'], // export theme components
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -94,15 +98,6 @@ const config = {
       footer: {
         style: 'dark',
         links: [
-          // {
-            // title: 'Docs',
-            // items: [
-              // {
-                // label: 'Tutorial',
-                // to: '/docs/intro',
-              // },
-            // ],
-          // },
           {
             title: 'Community',
             items: [
@@ -134,28 +129,28 @@ const config = {
       },
       languageTabs: [ // Determines displayed languages and order
         {
-          language: "curl",
+          language: 'curl',
         },
         {
-          language: "java",
+          language: 'java',
         },
         {
-          language: "kotlin",
+          language: 'kotlin',
         },
         {
-          language: "objective-c",
+          language: 'objective-c',
         },
         {
-          language: "javascript",
+          language: 'javascript',
         },
         {
-          language: "csharp",
+          language: 'csharp',
         },
         {
-          language: "php",
+          language: 'php',
         },
         {
-          language: "python",
+          language: 'python',
         },
       ],
     }),
