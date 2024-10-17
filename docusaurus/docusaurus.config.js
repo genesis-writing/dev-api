@@ -9,13 +9,18 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Dev API Docs',
-  tagline: 'API and SDK Documentation',
+  tagline: 'Open-source API endpoints for (unofficial) data on ' +
+  'The Ohio State University.',
   favicon: 'img/favicon.ico',
 
   // Production url of the docs site
   url: 'https://docs.api.osu.dev',
   // Set the /<baseUrl>/ pathname under which your site is served
   baseUrl: '/',
+  // Throw error when broken link detected
+  onBrokenLinks: "throw",
+  // Throw error when anchor detected
+  onBrokenAnchors: "throw",
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -51,22 +56,30 @@ const config = {
         config: {
           dev_api_versioned: {
             // General configuration for the API docs
-            specPath: '../docs/openapi.yaml', // Path to OpenAPI spec file
-            outputDir: './docs/api-docs/current', // Where the generated API docs go
+            specPath: '../docs/openapi.yaml', // Path to OpenAPI spec file (currently it's 1.0.0)
+            outputDir: './docs/api-docs/1.0.0', // Directory for the current version's generated API docs
             sidebarOptions: {
               groupPathsBy: 'tag', // Group by tags defined in the OpenAPI spec
             },
             // Versioning config
-            version: '1.0.0', // Current version
-            label: 'v1.0.0', // Current version label
-            baseUrl: '/api-docs', // Leading slash is important, direct to current API version
+            version: '1.0.0', // Current version (should match the actual current version)
+            label: 'v1.0.0', // Displayed label for the version
+            baseUrl: '/docs/api-docs/1.0.0', // Leading slash is important, direct to current API version ( set up a redirect in future?)
             versions: {
+              // Ordered oldest to newest
               '1.0.0': {
                 specPath: '../docs/openapi.yaml', // Path to V1.0.0 OpenAPI spec file
-                outputDir: './docs/api-docs/1.0.0', // No trailing slash, where the V1 generated API docs go
-                label: 'v1.0.0',
+                outputDir: './docs/api-docs/1.0.0', // No trailing slash, where the v1.0.0 generated API docs go
+                label: 'v1.0.0', // Displayed label for this version
                 baseUrl: '/docs/api-docs/1.0.0', // Leading slash is important, versioned path
               },
+              // Add future versions in this object, following this format
+              // '2.0.0': {
+              //   specPath: '../docs/openapi_v2.yaml',
+              //   outputDir: './docs/api-docs/2.0.0',
+              //   label: 'v2.0.0',
+              //   baseUrl: '/docs/api-docs/2.0.0',
+              // },
             },
           },
         },
@@ -92,6 +105,11 @@ const config = {
             href: 'https://github.com/devosu/dev-api',
             label: 'GitHub',
             position: 'right',
+          },
+          {
+            href: '/docs/api-docs/1.0.0',
+            label: 'API Reference',
+            position: 'left',
           },
         ],
       },

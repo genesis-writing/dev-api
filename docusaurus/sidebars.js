@@ -7,7 +7,7 @@ const {
 } = require("docusaurus-plugin-openapi-docs/lib/sidebars/utils");
 
 // Import the versions.json file, generates a version selector dynamically
-const apidocsVersions = require("./docs/api-docs/current/versions.json");
+const apidocsVersions = require("./docs/api-docs/versions.json");
 
 module.exports = {
   apisidebar: [
