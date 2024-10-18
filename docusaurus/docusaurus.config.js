@@ -10,7 +10,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'Dev API Docs',
   tagline: 'Open-source API endpoints for (unofficial) data on ' +
-  'The Ohio State University.',
+  'The Ohio State University',
   favicon: 'img/favicon.ico',
 
   // Production url of the docs site
@@ -100,7 +100,13 @@ const config = {
           alt: 'Website Logo',
           src: 'img/logo.svg',
         },
+        // Sidebar
         items: [
+          {
+            href: '/docs/contributors',
+            label: 'Contributors',
+            position: 'right',
+          },
           {
             href: 'https://github.com/devosu/dev-api',
             label: 'GitHub',
