@@ -55,8 +55,5 @@
   "cpu": [
     "x64",
     "arm64"
-  ],
-  "dependencies": {
-    "cz-cli": "^1.0.0"
-  }
+  ]
 }
